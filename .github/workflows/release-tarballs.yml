@@ -33,26 +33,15 @@ jobs:
           shasum -a 256 dist/vscode-server.tar.gz | tee dist/vscode-server.SHA256SUMS
           shasum -a 256 dist/cursor-server.tar.gz | tee dist/cursor-server.SHA256SUMS
 
-      - name: Publish VS Code release
+      - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          name: vscode-nightly
-          tag_name: vscode-nightly
+          name: ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
           target_commitish: ${{ github.sha }}
-          prerelease: true
           generate_release_notes: true
           files: |
             dist/vscode-server.tar.gz
             dist/vscode-server.SHA256SUMS
-
-      - name: Publish Cursor release
-        uses: softprops/action-gh-release@v2
-        with:
-          name: cursor-nightly
-          tag_name: cursor-nightly
-          target_commitish: ${{ github.sha }}
-          prerelease: true
-          generate_release_notes: true
-          files: |
             dist/cursor-server.tar.gz
             dist/cursor-server.SHA256SUMS
