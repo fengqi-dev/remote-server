@@ -54,5 +54,5 @@ echo "==> 查看已安装扩展"
 "$SERVER_DIR/bin/code-server" --list-extensions --show-versions
 
 echo "==> 打包extensions目录"
-tar -czf "$HOME/vscode-server.tar.gz" -C "$HOME/.vscode-server"
+tar -czf "$HOME/vscode-server.tar.gz" -C "$HOME/.vscode-server" .
 echo "打包完成: $HOME/vscode-server.tar.gz"
