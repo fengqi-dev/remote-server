@@ -12,7 +12,7 @@ COMMIT=$(curl -s -L \
   | jq -r '.version')
 echo "最新版本号: $COMMIT"
 
-SERVER_DIR="$HOME/.vscode-server/bin/$COMMIT"
+SERVER_DIR="$HOME/.vscode-server/cli/servers/Stable-$COMMIT/server"
 
 if [ -d "$SERVER_DIR" ]; then
   echo "==> VS Code Server 已存在：$SERVER_DIR"
@@ -53,6 +53,9 @@ done
 echo "==> 查看已安装扩展"
 "$SERVER_DIR/bin/code-server" --list-extensions --show-versions
 
+echo "[\"Stable-$COMMIT\"]" > "$HOME/.vscode-server/cli/servers/lru.json"
+rm -rf "$HOME/.vscode-server/data/*"
+
 echo "==> 打包extensions目录"
-tar -czf "$HOME/vscode-server.tar.gz" -C "$HOME/.vscode-server" .
-echo "打包完成: $HOME/vscode-server.tar.gz"
+tar -czf "$HOME/vscode-server-full.tar.gz" -C "$HOME/.vscode-server" .
+echo "打包完成: $HOME/vscode-server-full.tar.gz"

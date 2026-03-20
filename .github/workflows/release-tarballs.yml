@@ -30,8 +30,8 @@ jobs:
 
       - name: Generate SHA256SUMS
         run: |
-          shasum -a 256 dist/vscode-server.tar.gz | tee dist/vscode-server.SHA256SUMS
-          shasum -a 256 dist/cursor-server.tar.gz | tee dist/cursor-server.SHA256SUMS
+          shasum -a 256 dist/vscode-server-full.tar.gz | tee dist/vscode-server-full.SHA256SUMS
+          shasum -a 256 dist/cursor-server-full.tar.gz | tee dist/cursor-server-full.SHA256SUMS
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
@@ -41,7 +41,7 @@ jobs:
           target_commitish: ${{ github.sha }}
           generate_release_notes: true
           files: |
-            dist/vscode-server.tar.gz
-            dist/vscode-server.SHA256SUMS
-            dist/cursor-server.tar.gz
-            dist/cursor-server.SHA256SUMS
+            dist/vscode-server-full.tar.gz
+            dist/vscode-server-full.SHA256SUMS
+            dist/cursor-server-full.tar.gz
+            dist/cursor-server-full.SHA256SUMS
