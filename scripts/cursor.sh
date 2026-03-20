@@ -54,5 +54,5 @@ echo "==> 查看已安装扩展"
 "$SERVER_DIR/bin/cursor-server" --list-extensions --show-versions
 
 echo "==> 打包extensions目录"
-tar -czf "$HOME/cursor-server.tar.gz" -C "$HOME/.cursor-server" extensions
+tar -czf "$HOME/cursor-server.tar.gz" -C "$HOME/.cursor-server"
 echo "打包完成: $HOME/cursor-server.tar.gz"
